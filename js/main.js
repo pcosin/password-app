@@ -55,9 +55,30 @@ class PasswordManager {
     }
 
     deletePassword(id) {
-        this.passwords = this.passwords.filter(pass => pass.id !== id);
-        this.saveToStorage();
-        this.renderPasswords();
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "No podrás revertir esta acción",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#4CAF50',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Eliminar la contraseña
+                this.passwords = this.passwords.filter(pass => pass.id !== id);
+                this.saveToStorage();
+                this.renderPasswords();
+    
+                // Mostrar mensaje de éxito
+                Swal.fire(
+                    '¡Eliminado!',
+                    'La contraseña ha sido eliminada.',
+                    'success'
+                );
+            }
+        });
     }
 
     editPassword(password) {
@@ -84,15 +105,15 @@ class PasswordManager {
             
             return `
                 <tr>
-                    <td>${pass.site}</td>
-                    <td>${pass.username}</td>
-                    <td class="password-cell">
+                    <td data-label="Sitio web">${pass.site}</td>
+                    <td data-label="Nombre de usuario">${pass.username}</td>
+                    <td data-label="Contraseña" class="password-cell">
                         <span>••••••••</span>
                         <button class="action-button" onclick="passwordManager.togglePasswordVisibility(this.previousElementSibling, '${safePass.password}')">
                             <i class="fas fa-eye"></i>
                         </button>
                     </td>
-                    <td>
+                    <td data-label="Acciones">
                         <div class="actions">
                             <button class="action-button" 
                                     data-password='${JSON.stringify(safePass)}'

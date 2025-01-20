@@ -117,4 +117,61 @@ th:last-child, td:last-child {
     .form-group {
         grid-template-columns: 1fr;
     }
+
+    /* Ocultar los encabezados de la tabla en móvil */
+    thead {
+        display: none;
+    }
+
+    /* Cambiar la estructura de la tabla para móvil */
+    table, tbody, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    td {
+        /* Quitar el borde inferior que tenían las celdas */
+        border: none;
+        padding: 5px 10px;
+        text-align: left;
+        
+        /* Agregar labels para cada campo */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Agregar labels usando pseudo-elementos */
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    /* Ajustar el contenedor de acciones */
+    td:last-child {
+        border-top: 1px solid #eee;
+        margin-top: 5px;
+        padding-top: 10px;
+        margin-left: 0;
+    }
+    th:last-child, td:last-child {
+        width: auto;
+    }
+
+    .actions {
+        justify-content: flex-end;
+    }
+
+    /* Ajustar la celda de contraseña */
+    .password-cell {
+        justify-content: space-between;
+    }
 }
