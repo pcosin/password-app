@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <title>Gestor de Contraseñas</title>
+</head>
+<body>
+    <section class="container">
+        <div class="card">
+            <h1>Gestor de Contraseñas</h1>
+            <form id="passwordForm">
+                <div class="form-group">
+                    <input type="text" id="site" placeholder="Sitio web" required>
+                    <input type="text" id="username" placeholder="Nombre de usuario" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit">Guardar Contraseña</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h1>Contraseñas Guardadas</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sitio</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="passwordList"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
